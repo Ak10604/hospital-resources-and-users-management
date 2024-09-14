@@ -1,0 +1,139 @@
+<?php
+session_start();
+$con = mysqli_connect("localhost", "root", "", "myhmsdb");
+
+// Handling patient submission
+if (isset($_POST['patsub1'])) {
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+    
+    if ($password == $cpassword) {
+        $query = "INSERT INTO patreg (fname, lname, gender, email, contact, password, cpassword) VALUES ('$fname', '$lname', '$gender', '$email', '$contact', '$password', '$cpassword')";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            $_SESSION['username'] = $fname . " " . $lname;
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;
+            $_SESSION['gender'] = $gender;
+            $_SESSION['contact'] = $contact;
+            $_SESSION['email'] = $email;
+            header("Location: admin-panel.php");
+        }
+    } else {
+        header("Location: error1.php");
+    }
+}
+
+// Function to display doctors in the form
+function display_docs()
+{
+    global $con;
+    $query = "SELECT * FROM doctb";
+    $result = mysqli_query($con, $query);
+    while ($row = mysqli_fetch_array($result)) {
+        $name = $row['name'];
+        echo '<option value="' . $name . '">' . $name . '</option>';
+    }
+}
+
+// Handling doctor submission
+if (isset($_POST['doc_sub'])) {
+    $name = $_POST['name'];
+    $query = "INSERT INTO doctb (name) VALUES ('$name')";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        header("Location: adddoc.php");
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Admin Panel</title>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="post" action="search.php">
+                <input class="form-control mr-sm-2" type="text" placeholder="enter contact number" name="contact">
+                <input type="submit" class="btn btn-outline-light my-2 my-sm-0" name="search_submit" value="Search">
+            </form>
+        </div>
+    </nav>
+</head>
+<body style="padding-top:50px;">
+    <div class="container-fluid" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab">Appointment</a>
+                    <a class="list-group-item list-group-item-action" href="patientdetails.php">Patient List</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile">Payment Status</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages">Prescription</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings">Doctors Section</a>
+                </div><br>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel">
+                        <div class="container-fluid">
+                            <div class="card">
+                                <div class="card-body">
+                                    <center><h4>Create an appointment</h4></center><br>
+                                    <form class="form-group" method="post" action="appointment.php">
+                                        <div class="row">
+                                            <div class="col-md-4"><label>First Name:</label></div>
+                                            <div class="col-md-8"><input type="text" class="form-control" name="fname"></div><br><br>
+                                            <div class="col-md-4"><label>Last Name:</label></div>
+                                            <div class="col-md-8"><input type="text" class="form-control" name="lname"></div><br><br>
+                                            <div class="col-md-4"><label>Email id:</label></div>
+                                            <div class="col-md-8"><input type="text" class="form-control" name="email"></div><br><br>
+                                            <div class="col-md-4"><label>Contact Number:</label></div>
+                                            <div class="col-md-8"><input type="text" class="form-control" name="contact"></div><br><br>
+                                            <div class="col-md-4"><label>Doctor:</label></div>
+                                            <div class="col-md-8">
+                                                <select name="doctor" class="form-control">
+                                                    <?php display_docs(); ?>
+                                                </select>
+                                            </div><br><br>
+                                            <div class="col-md-4"><label>Payment:</label></div>
+                                            <div class="col-md-8">
+                                                <select name="payment" class="form-control">
+                                                    <option value="" disabled selected>Select Payment Status</option>
+                                                    <option value="Paid">Paid</option>
+                                                    <option value="Pay later">Pay later</option>
+                                                </select>
+                                            </div><br><br>
+                                            <div class="col-md-4">
+                                                <input type="submit" name="entry_submit" value="Create new entry" class="btn btn-primary">
+                                            </div>
+                                            <button type="submit" name="entry_submit " value="submit" ><a href="/" register</button>                                       </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><br>
+                    </div>
+                    <!-- Other Tab Sections (Payments, Doctors) can follow the same pattern -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI supervision</title>
+    <style>
+        /* Adding background image */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/ai-generated-8612487_1280.jpg'); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed; 
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            position: relative; /* For positioning buttons within the container */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        #userQuery {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #fafafa;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        h3 {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        #responseOutput {
+            background-color: #fafafa;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #responseOutput p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        #errorMessage {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Extra Buttons Styling */
+        .extra-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .extra-buttons a {
+            text-decoration: none;
+        }
+
+        .extra-buttons button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .extra-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .chat-container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            /* Adjust button spacing for mobile */
+            .extra-buttons {
+                top: 10px;
+                right: 10px;
+            }
+
+            .extra-buttons button {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>    AI supervision</h1>
+
+        <!-- Input area for user query -->
+        <label for="userQuery">Enter your query:</label>
+        <input type="text" id="userQuery" placeholder="Type your question here">
+        <button onclick="handleChat()">Submit Query</button>
+
+        <h3>Response:</h3>
+        <div id="responseOutput"></div>
+
+        <!-- Error message -->
+        <p id="errorMessage"></p>
+    </div>
+
+    <!-- Extra Buttons with Links -->
+    <div class="extra-buttons">
+        <a href="index.html" target="_blank">
+            <button>Home</button>
+        </a>
+        <a href="services.html" target="_blank">
+            <button>About us </button>
+        </a>
+        <a href="contact.html"target="_blank">
+            <button>Contact </button>
+        </a>
+    </div>
+
+    <!-- Include your JavaScript -->
+    <script src="001.js"></script>
+</body>
+</html>

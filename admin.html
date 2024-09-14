@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #343a40;
+            padding: 10px;
+            text-align: center;
+        }
+        .home-button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .sidebar {
+            background-color: #343a40;
+            color: white;
+            width: 200px;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Receptionist Dashboard</h1>
+</header>
+
+<nav>
+    <a href="index.html" class="home-button">Home</a>
+    <a href="#beds" class="home-button">Beds</a>
+    <a href="#doctors" class="home-button">Doctors</a>
+    <a href="#appointments" class="home-button">Appointments</a>
+    <a href="#billing" class="home-button">Billing</a>
+    <a href="#medicines" class="home-button">Medicines</a>
+</nav>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="index.html" class="home-button">Home</a></li>
+            <li><a href="#beds" class="home-button">Check Beds</a></li>
+            <li><a href="#doctors" class="home-button">Check Doctors</a></li>
+            <li><a href="#appointments" class="home-button">Check Appointments</a></li>
+            <li><a href="#billing" class="home-button">Check Billing</a></li>
+            <li><a href="#medicines" class="home-button">Check Medicine Availability</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <!-- Beds Section -->
+        <section id="beds">
+            <h2>Bed Availability</h2>
+            <table>
+                <tr>
+                    <th>Bed Number</th>
+                    <th>Status</th>
+                    <th>Patient</th>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>Occupied</td>
+                    <td>John Doe</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Available</td>
+                    <td>N/A</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Doctors Section -->
+        <section id="doctors">
+            <h2>Doctors On Duty</h2>
+            <table>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Specialization</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Dr. Smith</td>
+                    <td>Cardiologist</td>
+                    <td>On Duty</td>
+                </tr>
+                <tr>
+                    <td>Dr. Lee</td>
+                    <td>Orthopedist</td>
+                    <td>Available</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments">
+            <h2>Appointments</h2>
+            <table>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Doctor</th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>Dr. Smith</td>
+                    <td>2024-09-15, 10:00 AM</td>
+                    <td>Confirmed</td>
+                </tr>
+                <tr>
+                    <td>Mike Ross</td>
+                    <td>Dr. Lee</td>
+                    <td>2024-09-16, 11:30 AM</td>
+                    <td>Pending</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Billing Section -->
+        <section id="billing">
+            <h2>Billing Status</h2>
+            <table>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Total Bill</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>John Doe</td>
+                    <td>$1,500</td>
+                    <td>Paid</td>
+                </tr>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>$2,000</td>
+                    <td>Due</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Medicines Section -->
+        <section id="medicines">
+            <h2>Medicine Availability</h2>
+            <table>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Stock</th>
+                </tr>
+                <tr>
+                    <td>Paracetamol</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Amoxicillin</td>
+                    <td>30</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</div>
+
+<footer>
+    <p>Hospital Management System &copy; 2024</p>
+</footer>
+
+</body>
+</html>

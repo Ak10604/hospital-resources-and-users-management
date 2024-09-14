@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doctor's Appointment System</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		.container {
+			width: 80%;
+			margin: 40px auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		.form-label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.form-input {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+		}
+		.button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Doctor's Appointment System</h2>
+		<form>
+			<label class="form-label" for="hospital">Select Hospital:</label>
+			<select class="form-input" id="hospital" name="hospital">
+				<option value="">Select Hospital</option>
+				<option value="Hospital A">Hospital A</option>
+				<option value="Hospital B">Hospital B</option>
+				<option value="Hospital C">Hospital C</option>
+			</select><br><br>
+			
+			<!-- Doctor selection will be displayed based on hospital selection -->
+			<div id="doctor-selection">
+				<label class="form-label" for="doctor">Select Doctor:</label>
+				<select class="form-input" id="doctor" name="doctor">
+					<option value="">Select Doctor</option>
+				</select><br><br>
+			</div>
+			
+			<label class="form-label" for="name">Name:</label>
+			<input class="form-input" type="text" id="name" name="name"><br><br>
+			<label class="form-label" for="email">Email:</label>
+			<input class="form-input" type="email" id="email" name="email"><br><br>
+			<label class="form-label" for="phone">Phone:</label>
+			<input class="form-input" type="tel" id="phone" name="phone"><br><br>
+			<label class="form-label" for="date">Appointment Date:</label>
+			<input class="form-input" type="date" id="date" name="date"><br><br>
+			<label class="form-label" for="time">Appointment Time:</label>
+			<input class="form-input" type="time" id="time" name="time"><br><br>
+			
+			<button class="button" type="submit" onclick="bookAppointment()">Book Appointment</button>
+		</form>
+	</div>
+	
+	<script>
+		// JavaScript code to populate doctor selection based on hospital selection
+		const hospitalSelect = document.getElementById('hospital');
+		const doctorSelect = document.getElementById('doctor');
+		
+		hospitalSelect.addEventListener('change', function() {
+			const hospitalValue = hospitalSelect.value;
+			let doctorOptions = '';
+			
+			switch (hospitalValue) {
+				case 'Hospital A':
+					doctorOptions = `
+						<option value="">Select Doctor</option>
+						<option value="Dr. Smith">Dr. Smith</option>
+						<option value="Dr. Johnson">Dr. Johnson</option>
+						<option value="Dr. Lee">Dr. Lee</option>
+					`;
+					break;
+				case 'Hospital B':
+					doctorOptions = `
+						<option value="">Select Doctor</option>
+						<option value="Dr. Davis">Dr. Davis</option>
+						<option value="Dr. Taylor">Dr. Taylor</option>
+						<option value="Dr. Brown">Dr. Brown</option>
+					`;
+					break;
+				case 'Hospital C':
+					doctorOptions = `
+						<option value="">Select Doctor</option>
+						<option value="Dr. Martin">Dr. Martin</option>
+						<option value="Dr. Hall">Dr. Hall</option>
+						<option value="Dr. Patel">Dr. Patel</option>
+					`;
+					break;
+				default:
+					doctorOptions = '<option value="">Select Doctor</option>';
+			}
+			
+			// Update the doctor selection dropdown with the appropriate options
+			doctorSelect.innerHTML = doctorOptions;
+		});
+		
+		function bookAppointment() {
+			alert("Appointment booked successfully!");
+		}
+	</script>
+</body>
+</html>

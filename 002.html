@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat API Interaction</title>
+</head>
+<body>
+    <h1>Chat with API</h1>
+
+    <!-- Input area for user query -->
+    <label for="userQuery">Enter your query:</label>
+    <input type="text" id="userQuery" placeholder="Type your question here">
+    <button onclick="handleChat()">Submit Query</button>
+
+    <h3>Response:</h3>
+    <pre id="responseOutput"></pre>
+
+    <!-- Error message -->
+    <p id="errorMessage" style="color: red;"></p>
+
+    <!-- Include Axios from CDN if needed for other use -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Link to your custom JavaScript file -->
+    <script src="001.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Bed Booking Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #0062cc;" > 
+<article style="border: 2px solid rgb(183, 26, 26); background-color: aliceblue; padding: 100px;">
+    <header>
+       <marquee> <center><h1 style="border: 2px solid rgb(93, 93, 111); background-color: antiquewhite ;">Hospital Bed Booking Dashboard</h1><hr></center></marquee>
+        <button id="refresh-button">Refresh Data</button>
+        <button id="change-bed-button">Change Bed</button>
+    </header>
+    <main>
+        <section class="bed-booking-data">
+            <h1>Bed Booking Data</h1>
+            <input type="search" id="search-input" placeholder="Search by patient name or ward">
+            <table id="bed-booking-table">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Ward</th>
+                        <th>Bed Number</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bed-booking-data">
+                    <!-- Data will be loaded from PC file here -->
+                </tbody>
+            </table>
+        </section>
+        <section class="bed-booking-form" id="change-bed-form">
+            <h2>Change Bed</h2>
+            <form>
+                <label for="bed-number">Bed Number:</label>
+                <input type="number" id="bed-number" required>
+                <br>
+                <label for="patient-name">Patient Name:</label>
+                <input type="text" id="patient-name" required>
+                <br>
+                <label for="ward">Ward:</label>
+                <input type="text" id="ward" required>
+                <br>
+                <label for="booking-date">Booking Date:</label>
+                <input type="date" id="booking-date" required>
+                <br>
+                <label for="booking-time">Booking Time:</label>
+                <input type="time" id="booking-time" required>
+                <br>
+                <label for="status">Status:</label>
+                <select id="status" required>
+                    <option value="Available">Available</option>
+                    <option value="Booked">Booked</option>
+                    <option value="Occupied">Occupied</option>
+                </select>
+                <br>
+                <button id="change-bed-submit">Update Bed</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script></article>
+</body>
+</html>

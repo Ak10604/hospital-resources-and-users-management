@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Management Dashboard</title>
+    <link rel="stylesheet" href="STYLE.CSS">
+</head>
+<body>
+    <header>
+        <h1>Doctor's Management Dashboard</h1>
+        <nav>
+            <a href="index.html" class="home-button">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section class="appointments">
+            <h2>Upcoming Appointments</h2>
+            <table id="appointmentsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Patient Name</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Appointment rows will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="medicine">
+            <h2>Manage Medicines</h2>
+            <table id="medicineTable">
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Dosage</th>
+                        <th>Instructions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Medicine rows will be inserted here -->
+                </tbody>
+            </table>
+            <form id="medicineForm">
+                <label for="medicineName">Medicine Name:</label>
+                <input type="text" id="medicineName" required>
+                <label for="dosage">Dosage:</label>
+                <input type="text" id="dosage" required>
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" rows="4" required></textarea>
+                <button type="submit">Add Medicine</button>
+            </form>
+        </section>
+
+        <section class="schedule">
+            <h2>Manage Schedule</h2>
+            <form id="scheduleForm">
+                <label for="day">Day:</label>
+                <input type="text" id="day" required>
+                <label for="startTime">Start Time:</label>
+                <input type="time" id="startTime" required>
+                <label for="endTime">End Time:</label>
+                <input type="time" id="endTime" required>
+                <button type="submit">Add Schedule</button>
+            </form>
+            <table id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Schedule rows will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="SCRIPTS.JS"></script>
+</body>
+</html>
